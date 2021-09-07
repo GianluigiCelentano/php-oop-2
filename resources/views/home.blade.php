@@ -10,7 +10,33 @@
 </head>
 <body>
     <?php
-
+    class User {
+        public $name;
+        public $surnname;
+        public $age;
+        private $email;
+        private $address;
+        private $cv;
+        protected $cards=[];
+        public function __construct(string $name, string $surname, int $age, string $email, string $address, int $cv, int $cards) {
+            $this->name = $name;
+            $this->surname = $surname;
+            $this->age = $age;
+            $this->email = $email;
+            $this->address = $address;
+            $this->cv = $cv;
+        }
+        protected function addCards(User $cardsNumber) {
+            $this->cards[] = $cardsNumber;
+        }
+        protected function removeCards(User $cardsNumber) {
+            $keyCardToRemove = array_search($cardsNumber, $this->cards);
+            if($keyCardToRemove === false) {
+                throw new Exception("La carta è già stata eliminata");
+            }
+            unset($this->cards[$keyCardToRemove]);
+        }
+    }
     class Products {
         public $type;
         public $size;
