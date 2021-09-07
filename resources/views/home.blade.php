@@ -15,6 +15,11 @@
         public $type;
         public $size;
         public $quality;
+        public function __construct(string $type, int $size, string $quality) {
+            $this->type = $type;
+            $this->size = $size;
+            $this->quality = $quality;
+        }
     }
     ?>
 </body>
