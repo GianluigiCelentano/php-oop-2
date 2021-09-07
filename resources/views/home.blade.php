@@ -31,10 +31,10 @@
         }
         protected function removeCards(User $cardsNumber) {
             $keyCardToRemove = array_search($cardsNumber, $this->cards);
-            if($keyCardToRemove === false) {
-                throw new Exception("La carta è già stata eliminata");
+            if($keyCardToRemove === true) {
+                unset($this->cards[$keyCardToRemove]);
+                throw new Exception("La carta è stata eliminata");
             }
-            unset($this->cards[$keyCardToRemove]);
         }
     }
     class Products {
@@ -52,16 +52,54 @@
         }
         public function removeColor(Products $color) {
             $keyColorToRemove = array_search($color, $this->colors);
-            if($keyColorToRemove === false) {
-                throw new Exception("Il colore non è presente");
+            if($keyColorToRemove === true) {
+                unset($this->colors[$keyColorToRemove]);
+                throw new Exception("Colore cancellato");
             }
-            unset($this->colors[$keyColorToRemove]);
         }
         public function getProducts() {
             return $this->type;
             return $this->size;
             return $this->quality;
             return $this->colors;
+        }
+    }
+    class Shop {
+        protected $total;
+        public $coupon=[];
+        public $nProducts=[];
+        protected $address=[];
+        public function __construct (int $total, $coupon, int $nProducts, string $address) {
+            $this->total = $total;
+        }
+        public function addCoupon(Shop $couponNumber) {
+            $this->coupon = $couponNumber;
+            $keyCouponFounder = array_search($couponNumber, $this->$coupon);
+            if($keyCouponFounder===true) {
+                throw new Exception("Il coupon è già stato usato");
+            } else {
+                push($this->coupon[$keyCouponFounder]);
+            }
+        }
+        public function addProducts(Shop $productChoose) {
+            $this->nProducts = $productChoose;
+        }
+        public function removeProduct(Shop $productChoose) {
+            $keyProductFounder = array_search($productChoose, $this->nProducts);
+            if($keyProductFounder===true) {
+                unset($this->nProducts[$keyProductFounder]);
+                throw new Exception("Articolo rimosso con successo");
+            }
+        }
+        public function addAddress(Shop $addressChoose) {
+            $this->address = $addressChoose;
+        }
+        public function removeAddress(Shop $addressChoose) {
+            $keyAddressFounder = array_search($addressChoose, $this->address);
+            if($keyAddressFounder===true) {
+                unset($this->nProducts[$keyProductFounder]);
+                throw new Exception("Indirizzo rimosso con successo");
+            }
         }
     }
     ?>
