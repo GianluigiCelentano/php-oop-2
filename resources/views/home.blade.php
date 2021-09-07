@@ -29,8 +29,13 @@
             if($keyColorToRemove === false) {
                 throw new Exception("Il colore non è presente");
             }
-    
             unset($this->colors[$keyColorToRemove]);
+        }
+        public function getProducts() {
+            return $this->type;
+            return $this->size;
+            return $this->quality;
+            return $this->colors;
         }
     }
     ?>
