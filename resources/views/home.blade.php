@@ -29,7 +29,15 @@
         }
     }
     class Products {
-        public $products=[""]
+        public $sport=["scarpe sportive", "tuta", "pallone", "guanti"];
+        public $elegant=["mocassini", "cravatte", "papillon", "gonne", "vestiti"];
+        public $summer=["ciabatte", "infradito", "costumi", "telo mare", "ombrelloni"];
+        public $casual=["t-shirt", "jeans", "pantaloni lunghi", "pantaloni corti", "top"];
+        public $streetwear = ["t-shirt", "jeans", "pantaloni lunghi", "pantaloni corti", "top"];
+        
+        public function getProducts() {
+            
+        }
     }
 
     ?>
